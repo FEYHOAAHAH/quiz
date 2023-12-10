@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Quiz</title>
+</head>
+<body>
+    <h1>Question {{ question_number }}</h1>
+    <img src="{{ image.image.url }}" alt="Image">
+    <form method="post" action="{% url 'quiz:quiz_view' question_number=question_number %}">
+        {% csrf_token %}
+        <label for="user_answer">Your Answer:</label>
+        <input type="text" name="user_answer" required>
+        <input type="hidden" name="image_id" value="{{ image.id }}">
+        <button type="submit">Next</button>
+    </form>
+</body>
+</html>
